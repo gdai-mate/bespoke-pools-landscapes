@@ -40,8 +40,9 @@
  <div class="hero__pin">
   <div class="hero__media" id="heroMedia">
     <img class="hero__still" src="assets/hero-still.jpg" alt="Bespoke custom concrete pool, cabana and landscaped garden, Brisbane">
-    <video id="heroVid" muted playsinline preload="auto">
-      <source src="assets/hero-scrub.mp4" type="video/mp4">
+    <video id="heroVid" muted playsinline autoplay loop preload="auto">
+      <source src="assets/hero-mobile.mp4" type="video/mp4" media="(max-width: 860px)">
+      <source src="assets/hero-scrub.mp4" type="video/mp4" media="(min-width: 861px)">
     </video>
   </div>
   <div class="hero__scrim"></div>
@@ -82,7 +83,7 @@
       <p>Bespoke designs and builds the whole thing: the pool, the engineering and certification, the fencing, the decks, the gardens and the irrigation. It's led by directors Josh Kennaway and Matt Fittell, a small hands-on crew who stay across your build from the first meeting to the day you dive in.</p>
     </div>
     <div class="intro__stats io">
-      <div class="stat"><b>1</b><span>Team, start to finish, council approval to completion</span></div>
+      <div class="stat"><b>10<i>y+</i></b><span>Building backyards across Brisbane</span></div>
       <div class="stat"><b>100<i>%</i></b><span>Custom concrete pools, built to your block</span></div>
       <div class="stat"><b class="word">Plungie</b><span>Accredited plunge-pool partner</span></div>
       <div class="stat"><b class="word">Owner-run</b><span>Directors on your site, every build</span></div>
@@ -115,20 +116,22 @@
     <h3>Recent <em>work</em>, around Brisbane.</h3>
     <p>Custom concrete pools, gardens and outdoor living across the south-east.</p>
   </div>
+  <div class="strip__scroller" id="stripScroller">
   <div class="track">
-    <a class="card" href="gallery.html"><img src="assets/proj-dusk-pool-b.png" alt="Custom pool and outdoor living at dusk"><div class="card__cap">Hawthorne <span>Pool &amp; Landscape</span></div></a>
-    <a class="card" href="gallery.html"><img src="assets/work-pool.jpg" alt="Concrete pool with cabana and glass fencing"><div class="card__cap">Norman Park <span>Custom Pool</span></div></a>
-    <a class="card" href="gallery.html"><img src="assets/proj-firepit-river.png" alt="Stone firepit terrace overlooking the river"><div class="card__cap">Woody Point <span>Outdoor Living</span></div></a>
-    <a class="card" href="gallery.html"><img src="assets/work-facade.jpg" alt="Stone and timber home frontage"><div class="card__cap">Ascot <span>Landscape</span></div></a>
-    <a class="card" href="gallery.html"><img src="assets/proj-dusk-pool-a.png" alt="Pool and Queenslander at dusk"><div class="card__cap">Gumdale <span>Pool &amp; Landscape</span></div></a>
-    <a class="card" href="gallery.html"><img src="assets/work-outdoor.jpg" alt="Outdoor entertaining and garden"><div class="card__cap">Newport <span>Outdoor Living</span></div></a>
+    <a class="card" href="gallery.html"><img src="assets/proj-dusk-pool-b.png" alt="Custom pool and outdoor living at dusk"><span class="card__loc">Hawthorne</span><span class="card__cat">Pool &amp; Landscape</span></a>
+    <a class="card" href="gallery.html"><img src="assets/work-pool.jpg" alt="Concrete pool with cabana and glass fencing"><span class="card__loc">Norman Park</span><span class="card__cat">Custom Pool</span></a>
+    <a class="card" href="gallery.html"><img src="assets/proj-firepit-river.png" alt="Stone firepit terrace overlooking the river"><span class="card__loc">Woody Point</span><span class="card__cat">Outdoor Living</span></a>
+    <a class="card" href="gallery.html"><img src="assets/work-facade.jpg" alt="Stone and timber home frontage"><span class="card__loc">Ascot</span><span class="card__cat">Landscape</span></a>
+    <a class="card" href="gallery.html"><img src="assets/proj-dusk-pool-a.png" alt="Pool and Queenslander at dusk"><span class="card__loc">Gumdale</span><span class="card__cat">Pool &amp; Landscape</span></a>
+    <a class="card" href="gallery.html"><img src="assets/work-outdoor.jpg" alt="Outdoor entertaining and garden"><span class="card__loc">Newport</span><span class="card__cat">Outdoor Living</span></a>
     <!-- duplicate for seamless loop -->
-    <a class="card" href="gallery.html"><img src="assets/proj-dusk-pool-b.png" alt=""><div class="card__cap">Hawthorne <span>Pool &amp; Landscape</span></div></a>
-    <a class="card" href="gallery.html"><img src="assets/work-pool.jpg" alt=""><div class="card__cap">Norman Park <span>Custom Pool</span></div></a>
-    <a class="card" href="gallery.html"><img src="assets/proj-firepit-river.png" alt=""><div class="card__cap">Woody Point <span>Outdoor Living</span></div></a>
-    <a class="card" href="gallery.html"><img src="assets/work-facade.jpg" alt=""><div class="card__cap">Ascot <span>Landscape</span></div></a>
-    <a class="card" href="gallery.html"><img src="assets/proj-dusk-pool-a.png" alt=""><div class="card__cap">Gumdale <span>Pool &amp; Landscape</span></div></a>
-    <a class="card" href="gallery.html"><img src="assets/work-outdoor.jpg" alt=""><div class="card__cap">Newport <span>Outdoor Living</span></div></a>
+    <a class="card" href="gallery.html"><img src="assets/proj-dusk-pool-b.png" alt=""><span class="card__loc">Hawthorne</span><span class="card__cat">Pool &amp; Landscape</span></a>
+    <a class="card" href="gallery.html"><img src="assets/work-pool.jpg" alt=""><span class="card__loc">Norman Park</span><span class="card__cat">Custom Pool</span></a>
+    <a class="card" href="gallery.html"><img src="assets/proj-firepit-river.png" alt=""><span class="card__loc">Woody Point</span><span class="card__cat">Outdoor Living</span></a>
+    <a class="card" href="gallery.html"><img src="assets/work-facade.jpg" alt=""><span class="card__loc">Ascot</span><span class="card__cat">Landscape</span></a>
+    <a class="card" href="gallery.html"><img src="assets/proj-dusk-pool-a.png" alt=""><span class="card__loc">Gumdale</span><span class="card__cat">Pool &amp; Landscape</span></a>
+    <a class="card" href="gallery.html"><img src="assets/work-outdoor.jpg" alt=""><span class="card__loc">Newport</span><span class="card__cat">Outdoor Living</span></a>
+  </div>
   </div>
 </section>
 
@@ -218,7 +221,7 @@
 <section class="section" style="padding:clamp(56px,7vh,84px) 0">
   <div class="wrap">
     <div class="creds io">
-      <div class="cred"><b>14<span style="display:inline;font-size:.5em;color:var(--gold);vertical-align:super">yrs</span></b><span>Building in Brisbane</span></div>
+      <div class="cred"><b>10<span style="display:inline;font-size:.5em;color:var(--gold);vertical-align:super">y+</span></b><span>Building in Brisbane</span></div>
       <div class="cred"><b>300<span style="display:inline;font-size:.5em;color:var(--gold);vertical-align:super">+</span></b><span>Pools built</span></div>
       <div class="cred"><b style="font-size:clamp(24px,2.4vw,34px);font-family:var(--disp)">Plungie</b><span>Accredited partner</span></div>
       <div class="cred"><b style="font-size:clamp(24px,2.4vw,34px);font-family:var(--disp)">QBCC</b><span>Licensed &amp; insured</span></div>
@@ -316,55 +319,90 @@ const subs=[...document.querySelectorAll('.hero__row .fade-up')];
 const heroStill=document.querySelector('.hero__still');
 if(heroStill){ if(heroStill.complete) heroStill.classList.add('loaded'); else heroStill.addEventListener('load',()=>heroStill.classList.add('loaded')); }
 
-let vidDur=0;
-if(heroVid){
-  heroVid.pause();
-  const setDur=()=>{ if(heroVid.duration&&isFinite(heroVid.duration)) vidDur=heroVid.duration; };
-  heroVid.addEventListener('loadedmetadata',setDur); setDur();
-  const showVid=()=>heroVid.classList.add('ready');   // only reveal the video once a real frame is painted
-  heroVid.addEventListener('seeked',showVid,{once:true});
-  // prime: force the first frame to paint so the video never sits blank until you scroll
-  heroVid.addEventListener('loadeddata',()=>{ setDur(); const pr=heroVid.play(); if(pr&&pr.then){ pr.then(()=>{heroVid.pause();showVid();render();}).catch(()=>{showVid();render();}); } else { showVid(); render(); } });
-}
+const isMobile = matchMedia('(max-width: 860px)').matches;
 
 // mobile menu
 const toggle=document.querySelector('.navtoggle');
 if(toggle){ toggle.addEventListener('click',()=>nav.classList.toggle('menu-open')); }
 document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('menu-open')));
 
+// section reveals (all viewports)
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.16});
+document.querySelectorAll('.io').forEach(el=>io.observe(el));
+
+// video setup (desktop only; the mp4 source is gated to min-width 861px)
+let vidDur=0;
+if(heroVid && !isMobile){
+  heroVid.autoplay=false; heroVid.loop=false; heroVid.pause();
+  const setDur=()=>{ if(heroVid.duration&&isFinite(heroVid.duration)) vidDur=heroVid.duration; };
+  heroVid.addEventListener('loadedmetadata',setDur); setDur();
+  const showVid=()=>heroVid.classList.add('ready');
+  heroVid.addEventListener('seeked',showVid,{once:true});
+  heroVid.addEventListener('loadeddata',()=>{ setDur(); const pr=heroVid.play(); if(pr&&pr.then){ pr.then(()=>{heroVid.pause();showVid();render();}).catch(()=>{showVid();render();}); } else { showVid(); render(); } });
+}
+
 function render(){
   const total=hero.offsetHeight-innerHeight;
   const p=clamp(-hero.getBoundingClientRect().top/total,0,1);
-
   if(vidDur&&heroVid){ const t=Math.min(vidDur-0.04, p*vidDur); if(Math.abs(heroVid.currentTime-t)>0.008){ try{heroVid.currentTime=t;}catch(e){} } }
-
   nav.classList.toggle('scrolled', p>0.985);
-
   const ip=map(p,0.06,0.26);
   heroIntro.style.opacity=String(1-ip);
   heroIntro.style.transform=`scale(${1+ip*0.06}) translateY(${ip*-28}px)`;
   heroScroll.style.opacity=String(1-map(p,0.80,0.94));
-
   heroScrim.style.opacity=String(map(p,0.30,0.72));
   heroDark.style.opacity=String(map(p,0.42,0.86)*0.72);
-
   const ep=map(p,0.60,0.72);
   eyebrow.style.opacity=String(ep);
   eyebrow.style.transform=`translateY(${(1-ease(ep))*22}px)`;
   lines.forEach((ln,i)=>{ const s=0.64+i*0.075; ln.style.transform=`translateY(${(1-ease(map(p,s,s+0.16)))*112}%)`; });
   subs.forEach((el,i)=>{ const s=0.80+i*0.05, sp=map(p,s,s+0.16); el.style.opacity=String(sp); el.style.transform=`translateY(${(1-ease(sp))*26}px)`; });
-
   const r=night.getBoundingClientRect();
   const np=(innerHeight-r.top)/(innerHeight+r.height);
   if(np>-0.3&&np<1.4) nightMedia.style.transform=`translateY(${(np-0.5)*-90}px)`;
 }
-let ticking=false;
-addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(()=>{render();ticking=false;}); ticking=true; } },{passive:true});
-addEventListener('resize',render);
-render();
 
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.16});
-document.querySelectorAll('.io').forEach(el=>io.observe(el));
+if(!isMobile){
+  // desktop: rAF loop reads live scroll position (robust vs scroll-event quirks)
+  let last=-1;
+  (function raf(){ const y=scrollY; if(y!==last){ last=y; render(); } requestAnimationFrame(raf); })();
+  addEventListener('resize',render);
+  render();
+} else {
+  // mobile: static hero with an auto-looping walk-through (smooth, no pin/scrub, no iOS jump)
+  document.querySelectorAll('.hero .fade-up').forEach(el=>{ el.style.opacity='1'; el.style.transform='none'; });
+  lines.forEach(s=>s.style.transform='none');
+  if(heroScrim) heroScrim.style.opacity='.92';
+  if(heroDark) heroDark.style.opacity='.4';
+  if(heroScroll) heroScroll.style.display='none';
+  if(heroVid){ heroVid.loop=true; heroVid.classList.add('ready'); const pr=heroVid.play(); if(pr&&pr.catch) pr.catch(()=>{}); }
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>innerHeight*0.55),{passive:true});
+}
+
+// ---------- Recent work: gentle auto-drift + grab / swipe to scroll ----------
+const scroller=document.getElementById('stripScroller');
+if(scroller){
+  let pos=0, down=false, startX=0, startL=0, moved=false, pauseUntil=0;
+  const now=()=>performance.now();
+  const half=()=>(scroller.scrollWidth/2)||1;
+  function tick(){
+    if(down || now()<pauseUntil){ pos=scroller.scrollLeft; }          // stay in sync while paused/dragging (incl. iOS momentum)
+    else { pos+=0.5; if(pos>=half()) pos-=half(); scroller.scrollLeft=pos; }  // resume drift from where it settled
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  if(!isMobile){
+    scroller.addEventListener('pointerenter',()=>{ pauseUntil=Infinity; });
+    scroller.addEventListener('pointerleave',()=>{ pos=scroller.scrollLeft; pauseUntil=0; });
+  }
+  scroller.addEventListener('pointerdown',e=>{ down=true; moved=false; startX=e.clientX; startL=scroller.scrollLeft; scroller.classList.add('dragging'); });
+  addEventListener('pointermove',e=>{ if(!down)return; const dx=e.clientX-startX; if(Math.abs(dx)>6) moved=true; scroller.scrollLeft=startL-dx; });
+  addEventListener('pointerup',()=>{ if(!down)return; down=false; scroller.classList.remove('dragging'); pos=scroller.scrollLeft; pauseUntil=now()+1500; });
+  scroller.addEventListener('click',e=>{ if(moved){ e.preventDefault(); e.stopPropagation(); } },true);
+  scroller.addEventListener('touchstart',()=>{ pos=scroller.scrollLeft; pauseUntil=now()+1500; },{passive:true});
+  scroller.addEventListener('touchmove',()=>{ pos=scroller.scrollLeft; pauseUntil=now()+1500; },{passive:true});
+  scroller.addEventListener('touchend',()=>{ pos=scroller.scrollLeft; pauseUntil=now()+1500; },{passive:true});
+}
 </script>
 </body>
 </html>
