@@ -39,7 +39,8 @@
 <header class="hero" id="hero">
  <div class="hero__pin">
   <div class="hero__media" id="heroMedia">
-    <video id="heroVid" poster="assets/hero-day.png" muted playsinline preload="auto">
+    <img class="hero__still" src="assets/hero-still.jpg" alt="Bespoke custom concrete pool, cabana and landscaped garden, Brisbane">
+    <video id="heroVid" muted playsinline preload="auto">
       <source src="assets/hero-scrub.mp4" type="video/mp4">
     </video>
   </div>
@@ -133,7 +134,7 @@
 
 <!-- NIGHT FEATURE -->
 <section class="night" id="night">
-  <div class="night__media" id="nightMedia"><img src="assets/hero-night.png" alt="Bespoke pool lit at night with tropical landscaping"></div>
+  <div class="night__media" id="nightMedia"><img src="assets/hero-night-still.jpg" alt="Bespoke pool lit at night with tropical landscaping"></div>
   <div class="night__inner io">
     <div class="kicker"><span class="ln"></span> After dark <span class="ln"></span></div>
     <h2>Built to live in,<br><em>long after</em> the sun goes down.</h2>
@@ -311,11 +312,17 @@ const eyebrow=document.querySelector('.hero__eyebrow');
 const lines=[...document.querySelectorAll('.hero h1 .reveal-line>span')];
 const subs=[...document.querySelectorAll('.hero__row .fade-up')];
 
+// still image fades in the moment it decodes, so the hero is never blank
+const heroStill=document.querySelector('.hero__still');
+if(heroStill){ if(heroStill.complete) heroStill.classList.add('loaded'); else heroStill.addEventListener('load',()=>heroStill.classList.add('loaded')); }
+
 let vidDur=0;
 if(heroVid){
   heroVid.pause();
   const setDur=()=>{ if(heroVid.duration&&isFinite(heroVid.duration)) vidDur=heroVid.duration; };
   heroVid.addEventListener('loadedmetadata',setDur); setDur();
+  // prime: force the first frame to paint so the video never sits blank until you scroll
+  heroVid.addEventListener('loadeddata',()=>{ setDur(); const pr=heroVid.play(); if(pr&&pr.then){ pr.then(()=>{heroVid.pause();render();}).catch(()=>render()); } else { render(); } });
 }
 
 // mobile menu
