@@ -321,8 +321,10 @@ if(heroVid){
   heroVid.pause();
   const setDur=()=>{ if(heroVid.duration&&isFinite(heroVid.duration)) vidDur=heroVid.duration; };
   heroVid.addEventListener('loadedmetadata',setDur); setDur();
+  const showVid=()=>heroVid.classList.add('ready');   // only reveal the video once a real frame is painted
+  heroVid.addEventListener('seeked',showVid,{once:true});
   // prime: force the first frame to paint so the video never sits blank until you scroll
-  heroVid.addEventListener('loadeddata',()=>{ setDur(); const pr=heroVid.play(); if(pr&&pr.then){ pr.then(()=>{heroVid.pause();render();}).catch(()=>render()); } else { render(); } });
+  heroVid.addEventListener('loadeddata',()=>{ setDur(); const pr=heroVid.play(); if(pr&&pr.then){ pr.then(()=>{heroVid.pause();showVid();render();}).catch(()=>{showVid();render();}); } else { showVid(); render(); } });
 }
 
 // mobile menu

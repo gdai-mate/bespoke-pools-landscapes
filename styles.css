@@ -77,7 +77,8 @@ a{color:inherit;text-decoration:none}
 .hero__pin{position:sticky;top:0;height:100svh;min-height:620px;overflow:hidden}
 .hero__media{position:absolute;inset:-3%;transform:scale(1.03)}
 .hero__media video,.hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.hero__media video{z-index:1}
+.hero__media video{z-index:1;opacity:0;transition:opacity .5s var(--ease)}
+.hero__media video.ready{opacity:1}
 .hero__still{opacity:0;transition:opacity .7s var(--ease)}
 .hero__still.loaded{opacity:1}
 .hero__scrim{position:absolute;inset:0;opacity:0;will-change:opacity;background:linear-gradient(to top,rgba(8,11,6,.92) 0%,rgba(8,11,6,.72) 20%,rgba(8,11,6,.45) 38%,rgba(8,11,6,.2) 56%,rgba(8,11,6,.04) 74%,transparent 88%),linear-gradient(100deg,rgba(8,11,6,.6) 0%,rgba(8,11,6,.28) 30%,transparent 52%)}
