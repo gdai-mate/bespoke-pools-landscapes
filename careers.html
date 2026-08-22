@@ -42,11 +42,59 @@
       <h2>Always keen to meet <em>good tradies.</em></h2>
       <p class="lead">Pool builders, landscapers, carpenters, labourers and apprentices. Even if we've nothing open right now, if you're good and you care, we want to know you.</p>
     </div>
-    <div style="text-align:center;margin-top:44px"><a class="cta-primary" href="contact.html">Apply / say hello <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <div style="text-align:center;margin-top:44px"><a class="cta-primary" href="#apply">Apply now <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
 </section>
 
-<section class="ctaband"><div class="wrap io"><h2>Reckon you'd <em>fit in?</em></h2><p>Send through a bit about yourself and what you do. We read every one.</p><a class="cta-primary" href="contact.html">Get in touch <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></section>
+<section class="section section--sand" id="apply">
+  <div class="wrap" style="max-width:780px">
+    <div class="shead center io">
+      <div class="kicker"><span class="ln"></span> Apply to join</div>
+      <h2>Come and <em>build with us.</em></h2>
+      <p class="lead">Tell us who you are and what you're good at. We read every application, and we'll be in touch if there's a fit, even if nothing's advertised right now.</p>
+    </div>
+    <form class="io" id="enquiry" style="margin-top:44px">
+      <div class="field row">
+        <div class="field"><label>First name</label><input type="text" name="first" required></div>
+        <div class="field"><label>Last name</label><input type="text" name="last" required></div>
+      </div>
+      <div class="field row">
+        <div class="field"><label>Phone</label><input type="tel" name="phone" required></div>
+        <div class="field"><label>Email</label><input type="email" name="email" required></div>
+      </div>
+      <div class="field row">
+        <div class="field"><label>Your trade</label>
+          <select name="trade">
+            <option value="">Select your trade</option>
+            <option>Pool builder</option>
+            <option>Landscaper</option>
+            <option>Carpenter</option>
+            <option>Concreter</option>
+            <option>Labourer</option>
+            <option>Apprentice</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Availability</label>
+          <select name="availability">
+            <option value="">Select</option>
+            <option>Full-time</option>
+            <option>Part-time</option>
+            <option>Casual</option>
+            <option>Apprenticeship</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>Years on the tools</label><input type="text" name="experience" placeholder="e.g. 5 years, or first-year apprentice"></div>
+      <div class="field"><label>Tell us about yourself</label><textarea name="message" placeholder="What you've worked on, what you're good at, and why you want to build with Bespoke..."></textarea></div>
+      <div class="field"><label>Resume or a few photos of your work (optional)</label><input type="file" name="files" multiple accept="image/*,.pdf,.doc,.docx"></div>
+      <button type="submit" class="cta-primary" style="width:100%;justify-content:center">Apply now
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p style="margin-top:14px;font-size:12.5px;color:var(--muted);text-align:center">We'll only use your details to consider you for work with Bespoke.</p>
+    </form>
+  </div>
+</section>
 
 <script src="site.js"></script>
 </body>
