@@ -334,7 +334,7 @@ function render(){
   const ip=map(p,0.06,0.26);
   heroIntro.style.opacity=String(1-ip);
   heroIntro.style.transform=`scale(${1+ip*0.06}) translateY(${ip*-28}px)`;
-  heroScroll.style.opacity=String(1-map(p,0.02,0.12));
+  heroScroll.style.opacity=String(1-map(p,0.80,0.94));
 
   heroScrim.style.opacity=String(map(p,0.30,0.72));
   heroDark.style.opacity=String(map(p,0.42,0.86)*0.72);
