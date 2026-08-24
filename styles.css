@@ -313,6 +313,25 @@ a{color:inherit;text-decoration:none}
 
 @keyframes heropan{0%{transform:scale(1.16) translateX(3.5%)}100%{transform:scale(1.16) translateX(-3.5%)}}
 
+/* ---------- PLUNGIE RANGE + PARTNER ---------- */
+.range{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:52px}
+.range__item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 22px 26px;text-align:center;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.section--sand .range__item{background:var(--paper)}
+.range__item:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(20,30,15,.1)}
+.range__item img{width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;margin-bottom:14px}
+.range__item h4{font-family:var(--disp);font-weight:500;font-size:20px}
+.range__item .dim{margin-top:8px;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--muted)}
+.swatches{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;margin-top:44px}
+.swatch{text-align:center}
+.swatch img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+.swatch span{display:block;margin-top:10px;font-family:var(--sans);font-weight:500;font-size:12px;color:var(--body);line-height:1.3}
+.partner-lockup{display:flex;align-items:center;justify-content:center;gap:clamp(24px,4vw,48px);flex-wrap:wrap;margin-top:24px}
+.partner-lockup .biz{display:flex;flex-direction:column;align-items:center}
+.partner-lockup img.pl-biz{height:46px;width:auto}
+.partner-lockup .div{width:1px;height:52px;background:var(--line)}
+.partner-lockup img.pl-plungie{height:56px;width:auto}
+.tm-slogan{font-family:var(--disp);font-weight:300;font-style:italic;font-size:clamp(22px,2.6vw,34px);color:var(--green-deep);text-align:center;line-height:1.15}
+
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:980px){
   .svc-grid,.svc-grid.two,.scope,.promise,.quotes,.gallery{grid-template-columns:1fr 1fr;columns:2}
@@ -340,6 +359,9 @@ a{color:inherit;text-decoration:none}
   .hero__pin{position:relative;height:100%}
   .hero__intro{display:none}
   .svc-grid,.svc-grid.two,.scope,.promise,.quotes,.team,.gallery{grid-template-columns:1fr;columns:1}
+  .range{grid-template-columns:1fr 1fr}
+  .swatches{grid-template-columns:repeat(4,1fr)}
+  .partner-lockup .div{display:none}
   .tstep{grid-template-columns:70px 1fr;gap:20px}
   .footer__top{grid-template-columns:1fr}
   .field.row{grid-template-columns:1fr}
