@@ -12,7 +12,6 @@
         <div class="dropdown">
           <a href="custom.html">Custom concrete<small>Designed to your block</small></a>
           <a href="plunge.html">Plunge pools<small>Fast install, Plungie partner</small></a>
-          <a href="reinforced.html">Reinforced concrete<small>Built to last decades</small></a>
           <a href="renovations.html">Pool renovations<small>Bring an old pool back</small></a>
         </div>
       </div>
@@ -36,7 +35,6 @@
           <h5>Pools</h5>
           <a href="custom.html">Custom concrete</a>
           <a href="plunge.html">Plunge pools</a>
-          <a href="reinforced.html">Reinforced concrete</a>
           <a href="renovations.html">Pool renovations</a>
         </div>
         <div class="fcol">
