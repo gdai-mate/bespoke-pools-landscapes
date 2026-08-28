@@ -82,8 +82,13 @@
   if(pmedia) addEventListener('scroll',()=>{ pmedia.style.transform=`translateY(${scrollY*0.22}px)`; },{passive:true});
 
   // reveals
-  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.16});
-  document.querySelectorAll('.io').forEach(el=>io.observe(el));
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.io').forEach(el=>{
+    // Elements taller than the viewport can never satisfy a fractional threshold,
+    // so reveal them straight away; observe the rest.
+    if(el.getBoundingClientRect().height > innerHeight*0.9){ el.classList.add('in'); }
+    else { io.observe(el); }
+  });
 
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item=>{
