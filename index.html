@@ -8,9 +8,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
+
+<!-- Dark intro veil: first paint is dark, the logo pops, then it lifts to reveal the hero -->
+<div class="intro-veil" id="introVeil"><img class="intro-veil__logo" decoding="async" src="assets/logo-white.png" alt="Bespoke Pools and Landscapes"></div>
 
 <nav class="nav" id="nav">
   <a class="brand" href="index.html">
@@ -316,7 +319,18 @@ const subs=[...document.querySelectorAll('.hero__row .fade-up')];
 
 // still image fades in the moment it decodes, so the hero is never blank
 const heroStill=document.querySelector('.hero__still');
-if(heroStill){ if(heroStill.complete) heroStill.classList.add('loaded'); else heroStill.addEventListener('load',()=>heroStill.classList.add('loaded')); }
+const introVeil=document.getElementById('introVeil');
+let veilLifted=false;
+function liftVeil(){
+  if(veilLifted)return; veilLifted=true;
+  setTimeout(()=>{ if(!introVeil)return; introVeil.classList.add('lift'); setTimeout(()=>introVeil.classList.add('done'),3400); }, 1800);
+}
+if(heroStill){
+  const onStill=()=>{ heroStill.classList.add('loaded'); if(heroStill.decode){ heroStill.decode().then(liftVeil).catch(liftVeil); } else { liftVeil(); } };
+  if(heroStill.complete && heroStill.naturalWidth) onStill();
+  else heroStill.addEventListener('load',onStill,{once:true});
+}
+setTimeout(liftVeil, 2800); // failsafe so the veil never sticks
 
 const isMobile = matchMedia('(max-width: 860px)').matches;
 
