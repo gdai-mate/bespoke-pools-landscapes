@@ -81,6 +81,9 @@
   const pmedia=document.querySelector('.phero__media');
   if(pmedia) addEventListener('scroll',()=>{ pmedia.style.transform=`translateY(${scrollY*0.22}px)`; },{passive:true});
 
+  // smooth load: blur-up placeholders + clean page reveal
+  bespokeReveal();
+
   // reveals
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0,rootMargin:'0px 0px -60px 0px'});
   document.querySelectorAll('.io').forEach(el=>{
@@ -113,4 +116,24 @@
   // contact form (prototype: no backend)
   const form=document.getElementById('enquiry');
   if(form) form.addEventListener('submit',e=>{ e.preventDefault(); const btn=form.querySelector('[type=submit]'); if(btn){btn.textContent='Thanks, we’ll be in touch shortly'; btn.disabled=true;} });
+
+  // failsafe: never leave the page hidden
+  setTimeout(()=>document.body.classList.add('ready'),1500);
 })();
+
+// Blur-up loading + clean page reveal (shared with index.html).
+function bespokeReveal(){
+  var map=window.LQIP||{};
+  document.querySelectorAll('img').forEach(function(img){
+    var src=img.getAttribute('src')||'';
+    if(/logo/i.test(src)) return;               // logos load instantly, leave them
+    if(img.closest('.hero__media')) return;     // homepage cinematic hero has its own load logic
+    var host=img.parentElement, lq=map[src];
+    if(lq&&host){ host.classList.add('blurup'); if(!host.style.backgroundImage) host.style.backgroundImage="url('"+lq+"')"; }
+    img.classList.add('bu');
+    var show=function(){ img.classList.add('in'); };
+    if(img.complete&&img.naturalWidth){ show(); }
+    else { img.addEventListener('load',show,{once:true}); img.addEventListener('error',show,{once:true}); }
+  });
+  document.body.classList.add('ready');
+}
