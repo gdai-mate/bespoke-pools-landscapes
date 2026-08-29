@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draft — Plungie range carousel + ecoFinish honeycomb</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F4F2EC;--ink:#14180f;--body:#3a4034;--muted:#8a9080;--green:#7A9A2E;--green-deep:#5f7d1f;--line:#e2ded3;--ease:cubic-bezier(.4,.14,.02,1);--disp:'Fraunces',Georgia,serif;--sans:'Manrope',sans-serif}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--paper);color:var(--body);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+  .sec{padding:clamp(70px,9vh,120px) 0}
+  .sec--sand{background:#EFEDE5}
+  .shead{max-width:640px;margin-bottom:20px}
+  .kicker{display:flex;align-items:center;gap:12px;font-weight:600;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--green-deep);margin-bottom:20px}
+  .kicker .ln{width:34px;height:1px;background:var(--green)}
+  h2{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4vw,52px);line-height:1.04;letter-spacing:-.02em;color:var(--ink)}
+  h2 em{font-style:italic;font-weight:400;color:var(--green-deep)}
+  .lead{margin-top:16px;font-size:clamp(15px,1.5vw,17px);line-height:1.6;color:var(--body)}
+  .note{max-width:1240px;margin:0 auto;padding:26px clamp(20px,4vw,48px) 0;font-size:13px;color:var(--muted)}
+
+  /* ---------- COVERFLOW CAROUSEL ---------- */
+  .cf{position:relative;height:520px;margin-top:40px;perspective:1600px}
+  .cf__stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d}
+  .cf-card{position:absolute;width:340px;transition:transform .85s var(--ease),filter .85s var(--ease),opacity .85s var(--ease);will-change:transform,filter,opacity;cursor:pointer}
+  .cf-card__inner{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 26px 22px;box-shadow:0 30px 60px rgba(20,24,15,.10)}
+  .cf-card__img{width:100%;aspect-ratio:4/3;object-fit:contain}
+  .cf-card__cap{text-align:center;margin-top:10px;opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease) .15s,transform .5s var(--ease) .15s}
+  .cf-card__cap h4{font-family:var(--disp);font-weight:500;font-size:22px;color:var(--ink)}
+  .cf-card__cap .dim{margin-top:5px;font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--muted)}
+  .cf-card.is-center .cf-card__cap{opacity:1;transform:none}
+  .cf.expanded .cf-card__cap{opacity:1;transform:none}
+  .cf__dots{position:absolute;left:0;right:0;bottom:-6px;display:flex;gap:9px;justify-content:center}
+  .cf__dots button{width:8px;height:8px;border-radius:50%;border:0;background:var(--line);cursor:pointer;transition:background .3s,transform .3s}
+  .cf__dots button.on{background:var(--green);transform:scale(1.25)}
+  .cf__hint{text-align:center;margin-top:30px;font-size:12.5px;letter-spacing:.02em;color:var(--muted)}
+
+  /* ---------- ECOFINISH HONEYCOMB ---------- */
+  .comb{margin-top:54px;display:flex;flex-direction:column;align-items:center;perspective:900px}
+  .comb__row{display:flex;justify-content:center;margin-top:-34px}
+  .comb__row:first-child{margin-top:0}
+  .hex{position:relative;width:148px;height:170px;margin:0 6px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background-size:cover;background-position:center;cursor:pointer;transition:transform .5s var(--ease),filter .5s var(--ease),box-shadow .5s var(--ease);transform:translateZ(0) rotateX(6deg);filter:saturate(1.02)}
+  .hex::after{content:"";position:absolute;inset:0;clip-path:inherit;box-shadow:inset 0 2px 10px rgba(255,255,255,.35),inset 0 -14px 26px rgba(0,0,0,.22);pointer-events:none}
+  .hex__label{position:absolute;left:0;right:0;bottom:34px;text-align:center;color:#fff;font-family:var(--disp);font-weight:500;font-size:15px;letter-spacing:.01em;text-shadow:0 2px 10px rgba(0,0,0,.6);opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease);pointer-events:none;padding:0 8px;line-height:1.15}
+  .comb:hover .hex{filter:saturate(.7) brightness(.82)}
+  .hex:hover{transform:translateY(-10px) scale(1.14) rotateX(0);filter:saturate(1.12) brightness(1.05)!important;box-shadow:0 26px 40px rgba(20,24,15,.32);z-index:5}
+  .hex:hover .hex__label{opacity:1;transform:none}
+  .comb__cap{margin-top:30px;font-size:12.5px;letter-spacing:.02em;color:var(--muted);text-align:center}
+
+  @media(max-width:720px){
+    .cf-card{width:260px}
+    .hex{width:104px;height:120px}
+    .comb__row{margin-top:-24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PLUNGIE RANGE — COVERFLOW ============ -->
+<section class="sec sec--sand">
+  <div class="wrap">
+    <div class="shead">
+      <div class="kicker"><span class="ln"></span> The Plungie range</div>
+      <h2>Five sizes, <em>a shape for every yard.</em></h2>
+      <p class="lead">From the compact Studio to the family-sized Max, there's a Plungie to suit your space. Hover to see them all at once.</p>
+    </div>
+
+    <div class="cf" id="cf">
+      <div class="cf__stage" id="cfStage"></div>
+      <div class="cf__dots" id="cfDots"></div>
+    </div>
+    <p class="cf__hint">Auto-rotating &middot; hover to compare all five</p>
+  </div>
+</section>
+
+<!-- ============ ECOFINISH — HONEYCOMB ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="shead">
+      <div class="kicker"><span class="ln"></span> ecoFinish interior coatings</div>
+      <h2>Seven finishes, <em>pick your water colour.</em></h2>
+      <p class="lead">Plungie's ecoFinish coatings set the mood of the water. Hover a tile to see the finish.</p>
+    </div>
+
+    <div class="comb" id="comb">
+      <div class="comb__row">
+        <div class="hex" data-name="Blue Lagoon" style="background-image:url('assets/plungie/swatch-blue-lagoon.webp')"><span class="hex__label">Blue Lagoon</span></div>
+        <div class="hex" data-name="Mediterranean Blue" style="background-image:url('assets/plungie/swatch-mediterranean-blue.webp')"><span class="hex__label">Mediterranean Blue</span></div>
+      </div>
+      <div class="comb__row">
+        <div class="hex" data-name="Grey Reef" style="background-image:url('assets/plungie/swatch-grey-reef.webp')"><span class="hex__label">Grey Reef</span></div>
+        <div class="hex" data-name="Kona Coast" style="background-image:url('assets/plungie/swatch-kona-coast.webp')"><span class="hex__label">Kona Coast</span></div>
+        <div class="hex" data-name="French Grey" style="background-image:url('assets/plungie/swatch-french-grey.webp')"><span class="hex__label">French Grey</span></div>
+      </div>
+      <div class="comb__row">
+        <div class="hex" data-name="Sahara Sand" style="background-image:url('assets/plungie/swatch-sahara-sand.webp')"><span class="hex__label">Sahara Sand</span></div>
+        <div class="hex" data-name="Perle Noire" style="background-image:url('assets/plungie/swatch-perle-noire.webp')"><span class="hex__label">Perle Noire</span></div>
+      </div>
+    </div>
+    <p class="comb__cap">Colours are indicative on screen. We'll show you real samples against your space.</p>
+  </div>
+</section>
+
+<script>
+const MODELS=[
+  {name:'Plungie Studio',dim:'3.6m × 2.2m',img:'assets/plungie/render-plungie-studio.webp'},
+  {name:'Plungie Quad',dim:'2.2m × 2.2m',img:'assets/plungie/render-plungie-quad.webp'},
+  {name:'Plungie Original',dim:'4.6m × 2.5m',img:'assets/plungie/render-plungie-original.webp'},
+  {name:'Plungie Arena',dim:'3.5m round',img:'assets/plungie/render-plungie-arena.webp'},
+  {name:'Plungie Max',dim:'6m × 3m',img:'assets/plungie/render-plungie-max.webp'}
+];
+const N=MODELS.length;
+const stage=document.getElementById('cfStage');
+const dotsWrap=document.getElementById('cfDots');
+const cf=document.getElementById('cf');
+let center=Math.floor(N/2), expanded=false, timer=null;
+
+const cards=MODELS.map((m,i)=>{
+  const c=document.createElement('div');
+  c.className='cf-card';
+  c.innerHTML=`<div class="cf-card__inner"><img class="cf-card__img" src="${m.img}" alt="${m.name}"><div class="cf-card__cap"><h4>${m.name}</h4><div class="dim">${m.dim}</div></div></div>`;
+  c.addEventListener('click',()=>{ if(!expanded){ center=i; layout(); restart(); }});
+  stage.appendChild(c);
+  const d=document.createElement('button'); d.addEventListener('click',()=>{center=i;layout();restart();}); dotsWrap.appendChild(d);
+  return c;
+});
+const dots=[...dotsWrap.children];
+
+function layout(){
+  cards.forEach((card,i)=>{
+    if(expanded){
+      const spread=i-(N-1)/2;
+      const gap=Math.min(240, cf.clientWidth/N);
+      card.style.transform=`translateX(${spread*gap}px) scale(.62)`;
+      card.style.filter='none'; card.style.opacity='1'; card.style.zIndex=20;
+      card.classList.remove('is-center');
+    }else{
+      let off=i-center;
+      if(off>N/2) off-=N; if(off<-N/2) off+=N;
+      const a=Math.abs(off);
+      const tx=off*320, sc=a===0?1:a===1?.72:.5, bl=a===0?0:a===1?3:6;
+      card.style.transform=`translateX(${tx}px) scale(${sc})`;
+      card.style.filter=`blur(${bl}px) brightness(${a===0?1:.82})`;
+      card.style.opacity=a<=1?(a===0?'1':'.62'):'0';
+      card.style.zIndex=30-a*10;
+      card.classList.toggle('is-center',a===0);
+    }
+    dots[i]&&dots[i].classList.toggle('on',i===center&&!expanded);
+  });
+}
+function tick(){ center=(center+1)%N; layout(); }
+function restart(){ clearInterval(timer); if(!expanded) timer=setInterval(tick,3500); }
+
+cf.addEventListener('mouseenter',()=>{ expanded=true; cf.classList.add('expanded'); clearInterval(timer); layout(); });
+cf.addEventListener('mouseleave',()=>{ expanded=false; cf.classList.remove('expanded'); layout(); restart(); });
+window.addEventListener('resize',layout);
+layout(); restart();
+</script>
+</body>
+</html>
