@@ -320,10 +320,14 @@ const subs=[...document.querySelectorAll('.hero__row .fade-up')];
 // still image fades in the moment it decodes, so the hero is never blank
 const heroStill=document.querySelector('.hero__still');
 const introVeil=document.getElementById('introVeil');
+// hold scroll during the opening so nobody scrolls past the reveal before it plays
+const lockScroll=()=>{ document.documentElement.style.overflow='hidden'; document.body.style.overflow='hidden'; };
+const unlockScroll=()=>{ document.documentElement.style.overflow=''; document.body.style.overflow=''; };
+if(introVeil){ lockScroll(); window.scrollTo(0,0); }
 let veilLifted=false;
 function liftVeil(){
   if(veilLifted)return; veilLifted=true;
-  setTimeout(()=>{ if(!introVeil)return; introVeil.classList.add('lift'); setTimeout(()=>introVeil.classList.add('done'),3400); }, 1800);
+  setTimeout(()=>{ if(!introVeil)return; introVeil.classList.add('lift'); unlockScroll(); setTimeout(()=>introVeil.classList.add('done'),3400); }, 1800);
 }
 if(heroStill){
   const onStill=()=>{ heroStill.classList.add('loaded'); if(heroStill.decode){ heroStill.decode().then(liftVeil).catch(liftVeil); } else { liftVeil(); } };
@@ -331,6 +335,7 @@ if(heroStill){
   else heroStill.addEventListener('load',onStill,{once:true});
 }
 setTimeout(liftVeil, 2800); // failsafe so the veil never sticks
+setTimeout(unlockScroll, 6000); // hard failsafe: never leave scroll locked
 
 const isMobile = matchMedia('(max-width: 860px)').matches;
 
