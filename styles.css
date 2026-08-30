@@ -199,7 +199,8 @@ img.bu.in{opacity:1}
 .feature__body p{margin-top:20px;font-size:clamp(15px,1.1vw,16.5px);line-height:1.72;color:var(--body);max-width:48ch}
 .feature__body .textlink{margin-top:22px}
 .ticks{margin-top:22px;display:flex;flex-direction:column;gap:12px}
-.ticks li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--body);line-height:1.5}
+.ticks li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:15px;color:inherit;line-height:1.5}
+.section--ink .ticks li::before{background:var(--gold-soft)}
 .ticks li::before{content:"";flex:0 0 auto;width:20px;height:20px;margin-top:1px;border-radius:50%;background:var(--green-deep);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/12px no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/12px no-repeat}
 
 /* ---------- PROCESS TIMELINE ---------- */
@@ -352,6 +353,36 @@ img.bu.in{opacity:1}
 .partner-lockup .div{width:1px;height:52px;background:var(--line)}
 .partner-lockup img.pl-plungie{height:56px;width:auto}
 .tm-slogan{font-family:var(--disp);font-weight:300;font-style:italic;font-size:clamp(22px,2.6vw,34px);color:var(--green-deep);text-align:center;line-height:1.15}
+
+/* ---------- PLUNGIE RANGE COVERFLOW + ECOFINISH HONEYCOMB ---------- */
+.cf{position:relative;height:380px;margin-top:20px}
+.cf__stage{position:absolute;inset:0}
+.cf-card{position:absolute;top:50%;left:50%;width:392px;margin:-150px 0 0 -196px;transition:transform .9s cubic-bezier(.16,1,.3,1),opacity .9s cubic-bezier(.16,1,.3,1);will-change:transform,opacity;pointer-events:none}
+.cf-card__img{display:block;width:100%;aspect-ratio:16/10;object-fit:contain;filter:drop-shadow(0 26px 26px rgba(20,24,15,.20));pointer-events:auto;cursor:pointer}
+.cf-card__cap{text-align:center;margin-top:2px;opacity:0;transition:opacity .55s cubic-bezier(.16,1,.3,1)}
+.cf-card__cap h4{font-family:var(--disp);font-weight:500;font-size:21px;color:var(--ink);letter-spacing:-.01em}
+.cf-card__cap .dim{margin-top:3px;font-weight:600;font-size:12px;letter-spacing:.05em;color:var(--muted);text-transform:uppercase}
+.cf-card.named .cf-card__cap{opacity:1}
+.cf__hint{text-align:center;margin-top:24px;font-size:12px;letter-spacing:.03em;color:var(--muted)}
+.eco{display:grid;grid-template-columns:0.92fr 1.08fr;gap:clamp(30px,5vw,72px);align-items:center}
+.comb{display:flex;flex-direction:column;align-items:center}
+.comb__row{display:flex;justify-content:center}
+.comb__row+.comb__row{margin-top:-25px}
+.hex{position:relative;width:126px;height:145px;margin:0 4px;cursor:pointer;filter:drop-shadow(0 9px 11px rgba(20,24,15,.22));transition:transform .55s cubic-bezier(.16,1,.3,1),filter .55s cubic-bezier(.16,1,.3,1)}
+.hex__face{position:absolute;inset:0;clip-path:polygon(50% 1%,99% 25.5%,99% 74.5%,50% 99%,1% 74.5%,1% 25.5%);background-size:cover;background-position:center;transition:filter .45s cubic-bezier(.16,1,.3,1)}
+.hex__face::after{content:"";position:absolute;inset:0;clip-path:inherit;box-shadow:inset 0 2px 6px rgba(255,255,255,.28),inset 0 -7px 14px rgba(0,0,0,.12)}
+.hex__label{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%) translateY(6px);text-align:center;color:#fff;font-family:var(--disp);font-weight:500;font-size:14px;letter-spacing:.01em;text-shadow:0 1px 3px rgba(0,0,0,.65),0 2px 14px rgba(0,0,0,.7);opacity:0;transition:opacity .4s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none;padding:0 12px;line-height:1.2}
+.comb.hot .hex:not(.on) .hex__face{filter:brightness(.72) saturate(.7)}
+.hex.on{transform:translateY(-9px);filter:drop-shadow(0 22px 22px rgba(20,24,15,.3))}
+.hex.on .hex__label{opacity:1;transform:translateY(-50%)}
+.comb__cap{margin-top:22px;font-size:12px;color:var(--muted);max-width:340px}
+@media(max-width:860px){
+  .eco{grid-template-columns:1fr;gap:34px}
+  .cf-card{width:300px;margin:-120px 0 0 -150px}
+  .cf{height:320px}
+  .hex{width:100px;height:115px}
+  .comb__row+.comb__row{margin-top:-20px}
+}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:980px){

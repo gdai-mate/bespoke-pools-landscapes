@@ -104,14 +104,38 @@
     });
   });
 
-  // gallery filter
-  const chips=document.querySelectorAll('.chip');
-  const tiles=document.querySelectorAll('.gtile');
-  chips.forEach(chip=>chip.addEventListener('click',()=>{
-    chips.forEach(c=>c.classList.remove('on')); chip.classList.add('on');
-    const f=chip.dataset.filter;
-    tiles.forEach(t=>{ t.style.display = (f==='all'||(t.dataset.tags||'').includes(f)) ? '' : 'none'; });
-  }));
+  // gallery filter (chips + ?filter= URL param from the plunge page)
+  const chips=[...document.querySelectorAll('.chip')];
+  const tiles=[...document.querySelectorAll('.gtile')];
+  const filtersWrap=document.querySelector('.filters');
+  if(chips.length && tiles.length){
+    const applyFilter=(f)=>{
+      let vis=0;
+      tiles.forEach(t=>{ const show=(f==='all'||(t.dataset.tags||'').includes(f)); t.style.display=show?'':'none'; if(show)vis++; });
+      if(vis===0 && f!=='all'){ // no supplied photos for this finish yet -> fall back to all Plungie
+        f='plunge';
+        tiles.forEach(t=>{ t.style.display=(t.dataset.tags||'').includes('plunge')?'':'none'; });
+      }
+      return f;
+    };
+    const setActive=(f)=>chips.forEach(c=>c.classList.toggle('on',c.dataset.filter===f));
+    chips.forEach(chip=>chip.addEventListener('click',()=>{ applyFilter(chip.dataset.filter); setActive(chip.dataset.filter); }));
+
+    const urlF=new URLSearchParams(location.search).get('filter');
+    if(urlF){
+      const eff=applyFilter(urlF);
+      let chip=chips.find(c=>c.dataset.filter===urlF);
+      if(!chip){ // finish colours have no chip — add one so the active filter is visible
+        chip=document.createElement('button');
+        chip.className='chip'; chip.dataset.filter=urlF;
+        chip.textContent=urlF.replace(/-/g,' ').replace(/\b\w/g,s=>s.toUpperCase());
+        chip.addEventListener('click',()=>{ applyFilter(urlF); setActive(urlF); });
+        filtersWrap && filtersWrap.appendChild(chip); chips.push(chip);
+      }
+      setActive(urlF);
+      const g=document.querySelector('.gallery'); if(g) requestAnimationFrame(()=>g.scrollIntoView({block:'start'}));
+    }
+  }
 
   // contact form (prototype: no backend)
   const form=document.getElementById('enquiry');

@@ -7,7 +7,7 @@
 <meta name="description" content="Bespoke Pools and Landscapes is an official Plungie Partner in Brisbane. We install the full range of award-winning, pre-cast Plungie plunge pools, delivered and craned in, then finished with fencing and landscaping.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body>
 
@@ -53,34 +53,23 @@
   <div class="wrap">
     <div class="shead io">
       <div class="kicker"><span class="ln"></span> The Plungie range</div>
-      <h2>Four sizes, <em>a shape for every yard.</em></h2>
-      <p class="lead">From the compact Studio for smaller inner-city yards to the family-sized Max, there's a Plungie to suit your space. We'll help you choose the right one for your block.</p>
+      <h2>Five sizes, <em>a shape for every yard.</em></h2>
+      <p class="lead">From the compact Studio to the family-sized Max. Hover to compare them all, click a pool to see it built.</p>
     </div>
-    <div class="range">
-      <div class="range__item io"><img decoding="async" src="assets/plungie/render-plungie-studio.webp" alt="Plungie Studio"><h4>Plungie Studio</h4><div class="dim">3.6m &times; 2.2m</div></div>
-      <div class="range__item io d1"><img decoding="async" src="assets/plungie/render-plungie-original.webp" alt="Plungie Original"><h4>Plungie Original</h4><div class="dim">4.6m &times; 2.5m</div></div>
-      <div class="range__item io d2"><img decoding="async" src="assets/plungie/render-plungie-arena.webp" alt="Plungie Arena"><h4>Plungie Arena</h4><div class="dim">3.5m round</div></div>
-      <div class="range__item io d3"><img decoding="async" src="assets/plungie/render-plungie-max.webp" alt="Plungie Max"><h4>Plungie Max</h4><div class="dim">6m &times; 3m</div></div>
-    </div>
+    <div class="cf" id="cf"><div class="cf__stage" id="cfStage"></div></div>
+    <p class="cf__hint">Auto-rotating &middot; hover to compare all five &middot; click a pool to see that model built</p>
   </div>
 </section>
 
 <section class="section">
-  <div class="wrap">
+  <div class="wrap eco">
     <div class="shead io">
       <div class="kicker"><span class="ln"></span> ecoFinish interior coatings</div>
-      <h2>Six finishes, <em>pick your water colour.</em></h2>
-      <p class="lead">Plungie's ecoFinish interior coatings set the mood of the water. Have a look, then we'll show you samples against your space.</p>
+      <h2>Seven finishes, <em>pick your water colour.</em></h2>
+      <p class="lead">Plungie's ecoFinish coatings set the mood of the water. Hover a tile to see the finish, click it to see pools built in that colour.</p>
+      <p class="comb__cap" style="margin-top:18px">Colours are indicative on screen. We'll show you real samples against your space.</p>
     </div>
-    <div class="swatches io">
-      <div class="swatch"><img decoding="async" src="assets/plungie/swatch-blue-lagoon.webp" alt="Blue Lagoon"><span>Blue Lagoon</span></div>
-      <div class="swatch"><img decoding="async" src="assets/plungie/swatch-mediterranean-blue.webp" alt="Mediterranean Blue"><span>Mediterranean Blue</span></div>
-      <div class="swatch"><img decoding="async" src="assets/plungie/swatch-grey-reef.webp" alt="Grey Reef"><span>Grey Reef</span></div>
-      <div class="swatch"><img decoding="async" src="assets/plungie/swatch-french-grey.webp" alt="French Grey"><span>French Grey</span></div>
-      <div class="swatch"><img decoding="async" src="assets/plungie/swatch-sahara-sand.webp" alt="Sahara Sand"><span>Sahara Sand</span></div>
-      <div class="swatch"><img decoding="async" src="assets/plungie/swatch-kona-coast.webp" alt="Kona Coast"><span>Kona Coast</span></div>
-      <div class="swatch"><img decoding="async" src="assets/plungie/swatch-perle-noire.webp" alt="Perle Noire"><span>Perle Noire</span></div>
-    </div>
+    <div class="comb" id="comb"></div>
   </div>
 </section>
 
@@ -99,6 +88,67 @@
 <section class="ctaband"><div class="wrap io"><h2>Want a plunge, <em>done fast?</em></h2><p>Tell us about your space. We'll let you know which Plungie suits, or whether a custom build is the better fit.</p><a class="cta-primary" href="contact.html">Enquire about a plunge <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></section>
 
 <script src="assets/lqip.js"></script>
-<script src="site.js?v=5"></script>
+<script src="site.js?v=8"></script>
+<script>
+/* Plungie range coverflow */
+(function(){
+  const MODELS=[
+    {name:'Plungie Studio',dim:'3.6 × 2.2m',img:'assets/plungie/render-plungie-studio.webp',filter:'studio'},
+    {name:'Plungie Quad',dim:'2.2 × 2.2m',img:'assets/plungie/render-plungie-quad.webp',filter:'plunge'},
+    {name:'Plungie Original',dim:'4.6 × 2.5m',img:'assets/plungie/render-plungie-original.webp',filter:'original'},
+    {name:'Plungie Arena',dim:'3.5m round',img:'assets/plungie/render-plungie-arena.webp',filter:'arena'},
+    {name:'Plungie Max',dim:'6 × 3m',img:'assets/plungie/render-plungie-max.webp',filter:'max'}
+  ];
+  const cf=document.getElementById('cf'), stage=document.getElementById('cfStage'); if(!cf) return;
+  const N=MODELS.length; let center=2, mode='arc', hoverIdx=null, timer=null, paused=false;
+  const cards=MODELS.map((m,i)=>{
+    const c=document.createElement('div'); c.className='cf-card';
+    c.innerHTML=`<img class="cf-card__img" src="${m.img}" alt="${m.name}"><div class="cf-card__cap"><h4>${m.name}</h4><div class="dim">${m.dim}</div></div>`;
+    const img=c.querySelector('.cf-card__img');
+    img.addEventListener('mouseenter',()=>{ if(mode==='arc'){ mode='row'; paused=true; clearInterval(timer);} else { hoverIdx=i; } layout(); });
+    img.addEventListener('click',()=>{ location.href='gallery.html?filter='+m.filter; });
+    stage.appendChild(c); return c;
+  });
+  function offset(i){ let o=i-center; if(o>N/2)o-=N; if(o<-N/2)o+=N; return o; }
+  let lastOff=cards.map(()=>null);
+  function layout(){
+    cards.forEach((card,i)=>{
+      const off=offset(i), a=Math.abs(off); let tx,ty,sc,op,z,named;
+      if(mode==='row'){ const mag=hoverIdx===i; tx=off*202; ty=mag?-12:0; sc=mag?.58:.5; op=1; z=mag?20:10-a; named=true; }
+      else if(a===0){tx=0;ty=0;sc=1;op=1;z=8;named=true;}
+      else if(a===1){tx=off*248;ty=26;sc=.78;op=.5;z=6;named=false;}
+      else{tx=off*430;ty=52;sc=.58;op=.22;z=4;named=false;}
+      if(lastOff[i]!==null && Math.abs(off-lastOff[i])>1.5){ card.style.transition='none'; requestAnimationFrame(()=>{card.style.transition='';}); } else { card.style.transition=''; }
+      lastOff[i]=off;
+      card.style.transform=`translateX(${tx}px) translateY(${ty}px) scale(${sc})`;
+      card.style.opacity=op; card.style.zIndex=z; card.classList.toggle('named',named);
+    });
+  }
+  function go(d){ center=(center+d+N)%N; hoverIdx=null; layout(); }
+  function play(){ clearInterval(timer); timer=setInterval(()=>{ if(!paused && mode==='arc') go(1); },2000); }
+  cf.addEventListener('mouseleave',()=>{ mode='arc'; hoverIdx=null; paused=false; layout(); play(); });
+  layout(); play();
+})();
+/* ecoFinish honeycomb */
+(function(){
+  const comb=document.getElementById('comb'); if(!comb) return;
+  const FINISHES=[['Blue Lagoon','blue-lagoon','blue-lagoon'],['Mediterranean Blue','mediterranean-blue','med-blue'],['Grey Reef','grey-reef','grey-reef'],['Kona Coast','kona-coast','kona-coast'],['French Grey','french-grey','french-grey'],['Sahara Sand','sahara-sand','sahara-sand'],['Perle Noire','perle-noire','perle-noire']];
+  const rows=[[0,1],[2,3,4],[5,6]];
+  rows.forEach(r=>{
+    const row=document.createElement('div'); row.className='comb__row';
+    r.forEach(idx=>{
+      const [name,img,fil]=FINISHES[idx];
+      const h=document.createElement('div'); h.className='hex';
+      h.innerHTML=`<span class="hex__face" style="background-image:url('assets/plungie/swatch-${img}.webp')"></span><span class="hex__label">${name}</span>`;
+      const face=h.querySelector('.hex__face');
+      face.addEventListener('mouseenter',()=>{ comb.classList.add('hot'); h.classList.add('on'); });
+      face.addEventListener('mouseleave',()=>{ comb.classList.remove('hot'); h.classList.remove('on'); });
+      face.addEventListener('click',()=>{ location.href='gallery.html?filter='+fil; });
+      row.appendChild(h);
+    });
+    comb.appendChild(row);
+  });
+})();
+</script>
 </body>
 </html>
