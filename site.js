@@ -194,23 +194,24 @@
     document.addEventListener('keydown',function(e){ if(!lb.classList.contains('open'))return; if(e.key==='Escape')close(); else if(e.key==='ArrowLeft')lbNav(-1); else if(e.key==='ArrowRight')lbNav(1); });
   }
 
-  // contact form -> Resend endpoint
+  // website forms (enquiry + careers) -> Resend endpoint. Generic: sends any named fields.
   const form=document.getElementById('enquiry');
-  if(form) form.addEventListener('submit',async e=>{
+  if(form&&form.getAttribute('data-endpoint')) form.addEventListener('submit',async e=>{
     e.preventDefault();
     const endpoint=form.getAttribute('data-endpoint');
+    const kind=form.getAttribute('data-kind')||'Website enquiry';
     const btn=form.querySelector('[type=submit]');
     const orig=btn?btn.innerHTML:'';
     if(btn){btn.disabled=true; btn.textContent='Sending…';}
-    const get=n=>{const el=form.querySelector('[name="'+n+'"]'); return el?el.value.trim():'';};
     const MAX=12*1024*1024; // ~12MB total
     const readFile=f=>new Promise(res=>{const r=new FileReader(); r.onload=()=>res({filename:f.name,content:String(r.result).split(',')[1]||''}); r.onerror=()=>res(null); r.readAsDataURL(f);});
+    const fields={};
+    form.querySelectorAll('input,select,textarea').forEach(el=>{ if(el.name&&el.type!=='file') fields[el.name]=(el.value||'').trim(); });
     let attachments=[],total=0;
     const fileInput=form.querySelector('input[type=file]');
     if(fileInput&&fileInput.files){ for(const f of fileInput.files){ total+=f.size; if(total>MAX)break; const a=await readFile(f); if(a&&a.content)attachments.push(a);} }
-    const payload={first:get('first'),last:get('last'),phone:get('phone'),email:get('email'),address:get('address'),project:get('project'),message:get('message'),company:get('company'),attachments};
     try{
-      const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind,fields,attachments})});
       const d=await r.json().catch(()=>({}));
       if(r.ok&&d.ok){ if(btn){btn.textContent='Thanks, we’ll be in touch shortly';} form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true); }
       else{ throw new Error(d.error||'send failed'); }
