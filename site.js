@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="footer__bar">
-        <span>© 2026 Bespoke Pools &amp; Landscapes. QBCC licensed &amp; insured.</span>
+        <span>© 2026 Bespoke Pools &amp; Landscapes. QBCC 15073457, licensed &amp; insured.</span>
         <span>Custom concrete pools · Plunge pools · Fencing · Landscaping · Brisbane</span>
       </div>
     </div>
