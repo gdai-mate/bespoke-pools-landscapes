@@ -152,6 +152,8 @@ img.bu.in{opacity:1}
 .section--ink .shead h2 em{color:var(--gold-soft)}
 .shead .lead{margin-top:24px;font-size:clamp(15px,1.2vw,18px);line-height:1.7;color:var(--body);max-width:56ch}
 .section--ink .shead .lead{color:rgba(255,255,255,.75)}
+.section--ink .feature__body p{color:rgba(255,255,255,.78)}
+.section--ink .feature__body h3 em{color:var(--gold-soft)}
 .shead.center .lead{margin-inline:auto}
 
 /* ---------- INTRO BAND + STATS ---------- */
