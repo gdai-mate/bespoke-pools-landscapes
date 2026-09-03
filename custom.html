@@ -7,7 +7,7 @@
 <meta name="description" content="Fully custom concrete pools designed to your Brisbane block. Any shape, any finish, engineered for sloping and difficult sites and finished with the landscape around them.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
 
@@ -47,6 +47,21 @@
 
 <section class="section section--sand">
   <div class="wrap">
+    <div class="shead center io">
+      <div class="kicker"><span class="ln"></span> Interior finishes</div>
+      <h2>Pick your <em>water colour.</em></h2>
+      <p class="lead">Your interior sets the mood of the water. We finish in O'Sullivan's pebble and glass ranges. Hover a tile to see the colour.</p>
+    </div>
+    <h3 class="fin-h">Standard pebble<span>Hardy, non-slip, and the most affordable finish</span></h3>
+    <div class="comb" id="combPebble"></div>
+    <h3 class="fin-h">100% glass<span>Smoother underfoot, more durable, and a luxurious sparkle</span></h3>
+    <div class="comb" id="combGlass"></div>
+    <p class="comb__cap" style="max-width:540px;margin:26px auto 0;text-align:center">Colours are indicative on screen and shift with light, depth and weather. We'll show you real samples against your space, and the final call is usually made once the shell's poured.</p>
+  </div>
+</section>
+
+<section class="section section--sand" style="padding-top:0">
+  <div class="wrap">
     <div class="feature flip">
       <div class="feature__media io"><img decoding="async" src="assets/projects/paddington-01.webp" alt="Custom pool set in a fully landscaped, styled backyard, Paddington"></div>
       <div class="feature__body io">
@@ -63,5 +78,29 @@
 
 <script src="assets/lqip.js"></script>
 <script src="site.js?v=9"></script>
+<script>
+(function(){
+  function build(id, items, rows){
+    var comb=document.getElementById(id); if(!comb) return;
+    rows.forEach(function(r){
+      var row=document.createElement('div'); row.className='comb__row';
+      r.forEach(function(i){
+        var it=items[i]; if(!it) return;
+        var h=document.createElement('div'); h.className='hex';
+        h.innerHTML='<span class="hex__face" style="background-image:url(\'assets/osullivan/'+it[1]+'\')"></span><span class="hex__label">'+it[0]+'</span>';
+        var face=h.querySelector('.hex__face');
+        face.addEventListener('mouseenter',function(){ comb.classList.add('hot'); h.classList.add('on'); });
+        face.addEventListener('mouseleave',function(){ comb.classList.remove('hot'); h.classList.remove('on'); });
+        row.appendChild(h);
+      });
+      comb.appendChild(row);
+    });
+  }
+  var PEBBLE=[['White','pebble-white.jpg'],['White + Aqua','pebble-white-aqua.jpg'],['White + Blue','pebble-white-blue.png'],['White + Green','pebble-white-green.png'],['White 50% Blue','pebble-white-50-blue.png'],['White, Blue + Black','pebble-white-blue-black.png'],['Champagne','pebble-champagne.jpg']];
+  var GLASS=[['Ice White','glass-ice-white.jpg'],['100% Clear','glass-clear.png'],['Water Blue','glass-water-blue.png'],['Cobalt Cove','glass-cobalt-cove.webp'],['Ocean','glass-ocean.jpg'],['Barrier Reef','glass-barrier-reef.jpg'],['Emerald','glass-emerald.jpg']];
+  build('combPebble',PEBBLE,[[0,1],[2,3,4],[5,6]]);
+  build('combGlass',GLASS,[[0,1],[2,3,4],[5,6]]);
+})();
+</script>
 </body>
 </html>
