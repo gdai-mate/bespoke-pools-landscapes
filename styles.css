@@ -238,15 +238,14 @@ img.bu.in{opacity:1}
 .quote p{font-size:clamp(15px,1.15vw,17px);line-height:1.66;color:var(--body);flex:1;margin-top:18px}
 .quote .who{margin-top:22px;font-family:var(--sans);font-weight:700;font-size:14px}
 .quote .who span{display:block;font-weight:500;color:var(--muted);font-size:12.5px;margin-top:3px;letter-spacing:.04em}
-/* Reviews carousel */
-.rev{position:relative;margin-top:52px}
-.rev__track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 2px;scrollbar-width:none;-webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
-.rev__track::-webkit-scrollbar{display:none}
-.rev__track .quote{flex:0 0 min(384px,82vw);scroll-snap-align:center}
-.rev__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);font-family:var(--disp);font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.10);transition:transform .3s var(--ease),background .3s,color .3s}
-.rev__nav:hover{background:var(--gold);color:#fff}
-.rev__prev{left:-8px}.rev__next{right:-8px}
-@media(max-width:700px){.rev__nav{display:none}.rev__track{-webkit-mask:none;mask:none}}
+/* Reviews marquee (continuous, seamless loop) */
+.rev{position:relative;margin-top:52px;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rev__track{display:flex;width:max-content;padding:6px 0;animation:revScroll 55s linear infinite}
+.rev:hover .rev__track{animation-play-state:paused}
+.rev__track .quote{flex:0 0 auto;width:min(384px,82vw);margin-right:24px}
+@keyframes revScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:700px){.rev{-webkit-mask:none;mask:none}}
+@media(prefers-reduced-motion:reduce){.rev__track{animation:none}.rev{overflow-x:auto}}
 
 /* ---------- CREDENTIALS STRIP ---------- */
 .creds{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(30px,5vw,72px);align-items:center;text-align:center}
