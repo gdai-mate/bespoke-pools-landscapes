@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
 
@@ -204,37 +204,17 @@
       <div class="kicker"><span class="ln"></span> What our clients say</div>
       <h2>The same thing, <em>every time:</em> we stayed in touch.</h2>
     </div>
-    <div class="quotes">
-      <div class="quote io">
-        <div class="mark">&ldquo;</div>
-        <p>We had bad experiences with trades whilst building. Bespoke changed all that and left us very content with the finished product. We always felt involved at every opportunity throughout the project.</p>
-        <div class="who">Luke Carey<span>Norman Park</span></div>
+    <div class="rev">
+      <button class="rev__nav rev__prev" type="button" aria-label="Previous review">&#8249;</button>
+      <div class="rev__track" id="revTrack">
+        <div class="quote"><div class="mark">&ldquo;</div><p>We had bad experiences with trades whilst building. Bespoke changed all that and left us very content with the finished product. We always felt involved at every opportunity throughout the project.</p><div class="who">Luke Carey<span>Norman Park</span></div></div>
+        <div class="quote"><div class="mark">&ldquo;</div><p>Thank you so much, Josh, Matt and the Bespoke team for our gorgeous pool and backyard. Great team onsite and excellent communication. Already have and will continue to recommend you.</p><div class="who">Sandra McDonald<span>Hawthorne</span></div></div>
+        <div class="quote"><div class="mark">&ldquo;</div><p>Since having our property landscaped by Bespoke, we've spent so much more time outside. The concept was well thought out and we couldn't be happier with the way the whole team handled themselves.</p><div class="who">Jennifer Thomas<span>Gumdale</span></div></div>
+        <div class="quote"><div class="mark">&ldquo;</div><p>The flexibility, the understanding of our vision, the professionalism of every person on the team. They delivered on our dream front garden, and it was the best building experience we've ever had.</p><div class="who">Johnson &amp; Tamara<span>Morningside</span></div></div>
+        <div class="quote"><div class="mark">&ldquo;</div><p>Josh made the whole process easy and stress-free. The communication was excellent and the attention to detail really stood out. We're thrilled with the pool and wouldn't hesitate to recommend Bespoke.</p><div class="who">Keith &amp; Leanne<span>Plungie install</span></div></div>
+        <div class="quote"><div class="mark">&ldquo;</div><p>Thank you for the journey and for helping us make our vision a reality. The professionalism, calm demeanour and customer focus are exceptional.</p><div class="who">Carl &amp; Martin<span>Plungie Max</span></div></div>
       </div>
-      <div class="quote io d1">
-        <div class="mark">&ldquo;</div>
-        <p>Thank you so much, Josh, Matt and the Bespoke team for our gorgeous pool and backyard. Great team onsite and excellent communication. Already have and will continue to recommend you.</p>
-        <div class="who">Sandra McDonald<span>Hawthorne</span></div>
-      </div>
-      <div class="quote io d2">
-        <div class="mark">&ldquo;</div>
-        <p>Since having our property landscaped by Bespoke, we've spent so much more time outside. The concept was well thought out and we couldn't be happier with the way the whole team handled themselves.</p>
-        <div class="who">Jennifer Thomas<span>Gumdale</span></div>
-      </div>
-      <div class="quote io d1">
-        <div class="mark">&ldquo;</div>
-        <p>The flexibility, the understanding of our vision, the professionalism of every person on the team. They delivered on our dream front garden, and it was the best building experience we've ever had.</p>
-        <div class="who">Johnson &amp; Tamara<span>Morningside</span></div>
-      </div>
-      <div class="quote io d2">
-        <div class="mark">&ldquo;</div>
-        <p>Josh made the whole process easy and stress-free. The communication was excellent and the attention to detail really stood out. We're thrilled with the pool and wouldn't hesitate to recommend Bespoke.</p>
-        <div class="who">Keith &amp; Leanne<span>Plungie install</span></div>
-      </div>
-      <div class="quote io d1">
-        <div class="mark">&ldquo;</div>
-        <p>Thank you for the journey and for helping us make our vision a reality. The professionalism, calm demeanour and customer focus are exceptional.</p>
-        <div class="who">Carl &amp; Martin<span>Plungie Max</span></div>
-      </div>
+      <button class="rev__nav rev__next" type="button" aria-label="Next review">&#8250;</button>
     </div>
     <div style="text-align:center;margin-top:38px"><a class="textlink" href="https://g.page/r/CUqDiebvn3R5EBM/review" target="_blank" rel="noopener">Worked with us? Leave a Google review <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
@@ -459,6 +439,28 @@ if(scroller){
   });
   document.body.classList.add('ready');
   setTimeout(function(){ document.body.classList.add('ready'); },1500);
+})();
+</script>
+<script>
+/* Reviews carousel: auto-advance, arrows, loop, pause on hover */
+(function(){
+  var t=document.getElementById('revTrack'); if(!t||!t.children.length) return;
+  function stepBy(dir){
+    var card=t.children[0].getBoundingClientRect().width+24;
+    var max=t.scrollWidth-t.clientWidth-4;
+    var nx=Math.round(t.scrollLeft)+dir*card;
+    if(nx>max-2) nx=0; else if(nx<0) nx=max;
+    t.scrollTo({left:nx,behavior:'smooth'});
+  }
+  var p=document.querySelector('.rev__prev'), n=document.querySelector('.rev__next');
+  if(p) p.addEventListener('click',function(){stepBy(-1)});
+  if(n) n.addEventListener('click',function(){stepBy(1)});
+  var timer;
+  function play(){ timer=setInterval(function(){stepBy(1)},4800); }
+  function stop(){ clearInterval(timer); }
+  var rev=document.querySelector('.rev');
+  if(rev){ rev.addEventListener('mouseenter',stop); rev.addEventListener('mouseleave',play); rev.addEventListener('touchstart',stop,{passive:true}); }
+  play();
 })();
 </script>
 </body>
