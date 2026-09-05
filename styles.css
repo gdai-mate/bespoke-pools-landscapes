@@ -464,6 +464,10 @@ img.bu.in{opacity:1}
 .hero__partner img{height:24px;width:auto;display:block}
 @keyframes heroPartnerIn{to{opacity:1}}
 @media(max-width:820px){.hero__partner{right:16px;bottom:16px;padding:7px 11px}.hero__partner img{height:20px}}
+/* Prominent partner lockup inside a page hero */
+.hero-partner-lockup{display:inline-block;background:#fff;border-radius:12px;padding:11px 16px;box-shadow:0 10px 30px rgba(0,0,0,.28);margin-bottom:22px}
+.hero-partner-lockup img{height:46px;width:auto;display:block}
+@media(max-width:700px){.hero-partner-lockup{padding:9px 13px;margin-bottom:16px}.hero-partner-lockup img{height:34px}}
 
 /* Process timeline duration tags */
 .ttime{display:inline-block;margin-left:10px;font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);background:rgba(201,162,39,.10);border:1px solid rgba(201,162,39,.25);padding:2px 9px;border-radius:999px;vertical-align:middle;white-space:nowrap}
