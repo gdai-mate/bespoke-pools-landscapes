@@ -55,6 +55,7 @@
           <a href="contact.html" class="textlink" style="color:var(--gold-soft);margin-top:10px">Start a project</a>
         </div>
       </div>
+      <div class="footer__partner"><img src="assets/plungie/partner-logo-horizontal.png" alt="Official Plungie Partner"></div>
       <div class="footer__bar">
         <span>© 2026 Bespoke Pools &amp; Landscapes. QBCC 15073457, licensed &amp; insured.</span>
         <span>Custom concrete pools · Plunge pools · Fencing · Landscaping · Brisbane</span>

@@ -467,8 +467,8 @@ img.bu.in{opacity:1}
 /* Prominent partner lockup inside a page hero */
 .hero-partner-lockup{display:inline-block;background:#fff;border-radius:12px;padding:11px 16px;box-shadow:0 10px 30px rgba(0,0,0,.28);margin-bottom:22px}
 .hero-partner-lockup img{height:46px;width:auto;display:block}
-.footer__partner{display:inline-block;background:#fff;border-radius:10px;padding:9px 13px;margin-top:20px}
-.footer__partner img{height:30px;width:auto;display:block}
+.footer__partner{display:inline-block;background:#fff;border-radius:8px;padding:8px 12px;margin:6px 0 22px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.footer__partner img{height:26px;width:auto;display:block}
 @media(max-width:700px){.hero-partner-lockup{padding:9px 13px;margin-bottom:16px}.hero-partner-lockup img{height:34px}}
 
 /* Process timeline duration tags */
