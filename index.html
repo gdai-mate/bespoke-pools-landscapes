@@ -365,8 +365,9 @@ const isMobile = matchMedia('(max-width: 860px)').matches;
 
 // mobile menu
 const toggle=document.querySelector('.navtoggle');
-if(toggle){ toggle.addEventListener('click',()=>nav.classList.toggle('menu-open')); }
-document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('menu-open')));
+const lockBody=on=>{document.body.style.overflow=on?'hidden':'';};
+if(toggle){ toggle.addEventListener('click',()=>lockBody(nav.classList.toggle('menu-open'))); }
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('menu-open');lockBody(false);}));
 
 // section reveals (all viewports)
 const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.16});

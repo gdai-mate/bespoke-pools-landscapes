@@ -72,7 +72,7 @@ img.bu.in{opacity:1}
 .nav.scrolled .btn,.nav.solid .btn{border-color:var(--ink);color:var(--ink)}
 .btn:hover,.nav.scrolled .btn:hover,.nav.solid .btn:hover{background:var(--green);border-color:var(--green);color:#fff}
 .navtoggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
-.navtoggle span{width:26px;height:2px;background:#fff;transition:background .4s var(--ease)}
+.navtoggle span{width:26px;height:2px;background:#fff;transition:transform .35s var(--ease),background .4s var(--ease),opacity .3s var(--ease)}
 .nav.scrolled .navtoggle span,.nav.solid .navtoggle span{background:var(--ink)}
 /* nav dropdown */
 .has-dropdown{position:relative;display:flex;align-items:center}
@@ -419,6 +419,15 @@ img.bu.in{opacity:1}
   .dropdown a small{display:none}
   .navtoggle{display:flex;z-index:110}
   .nav.menu-open .navtoggle span{background:#fff}
+  /* when the menu is open, drop the nav's backdrop-filter: an ancestor filter makes
+     position:fixed children resolve to the nav box (62px) instead of the viewport,
+     which collapsed the full-screen overlay whenever the nav was scrolled/solid */
+  .nav.menu-open{background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav.menu-open .navlinks{z-index:105}
+  /* hamburger morphs to an X so there's a clear close affordance */
+  .nav.menu-open .navtoggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav.menu-open .navtoggle span:nth-child(2){opacity:0}
+  .nav.menu-open .navtoggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .intro__grid,.feature,.feature.flip .feature__media,.contact-grid{grid-template-columns:1fr}
   .feature.flip .feature__media{order:0}
   .hero__row{flex-direction:column;align-items:flex-start}

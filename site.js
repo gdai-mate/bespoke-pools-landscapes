@@ -75,8 +75,9 @@
 
   // mobile menu
   const toggle=nav.querySelector('.navtoggle');
-  if(toggle) toggle.addEventListener('click',()=>nav.classList.toggle('menu-open'));
-  nav.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('menu-open')));
+  const lockBody=on=>{document.body.style.overflow=on?'hidden':'';};
+  if(toggle) toggle.addEventListener('click',()=>lockBody(nav.classList.toggle('menu-open')));
+  nav.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('menu-open');lockBody(false);}));
 
   // page-hero parallax
   const pmedia=document.querySelector('.phero__media');
