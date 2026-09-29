@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=20">
 <link rel="canonical" href="https://bespokepoolsandlandscapes.com.au/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png">
@@ -351,7 +351,9 @@ if(introVeil){ lockScroll(); window.scrollTo(0,0); }
 let veilLifted=false;
 function liftVeil(){
   if(veilLifted)return; veilLifted=true;
-  setTimeout(()=>{ if(!introVeil)return; introVeil.classList.add('lift'); unlockScroll(); setTimeout(()=>introVeil.classList.add('done'),3400); }, 1800);
+  const m=matchMedia('(max-width:860px)').matches;
+  const pre=m?450:1800, gone=m?600:3400;
+  setTimeout(()=>{ if(!introVeil)return; introVeil.classList.add('lift'); unlockScroll(); setTimeout(()=>introVeil.classList.add('done'),gone); }, pre);
 }
 if(heroStill){
   const onStill=()=>{ heroStill.classList.add('loaded'); if(heroStill.decode){ heroStill.decode().then(liftVeil).catch(liftVeil); } else { liftVeil(); } };
