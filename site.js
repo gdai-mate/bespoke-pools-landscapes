@@ -215,7 +215,7 @@
     try{
       const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind,fields,attachments})});
       const d=await r.json().catch(()=>({}));
-      if(r.ok&&d.ok){ if(btn){btn.textContent='Thanks, we’ll be in touch shortly';} form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true); }
+      if(r.ok&&d.ok){ if(btn){btn.textContent='Thanks, we’ll be in touch shortly';} form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true); try{ if(window.gtag) gtag('event','generate_lead',{form_type:kind}); }catch(_){} }
       else{ throw new Error(d.error||'send failed'); }
     }catch(err){
       if(btn){btn.disabled=false; btn.innerHTML=orig;}
