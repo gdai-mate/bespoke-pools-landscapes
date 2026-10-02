@@ -215,7 +215,16 @@
     try{
       const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind,fields,attachments})});
       const d=await r.json().catch(()=>({}));
-      if(r.ok&&d.ok){ if(btn){btn.textContent='Thanks, we’ll be in touch shortly';} form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true); try{ if(window.gtag) gtag('event','generate_lead',{form_type:kind}); }catch(_){} }
+      if(r.ok&&d.ok){
+        try{ if(window.gtag) gtag('event','generate_lead',{form_type:kind}); }catch(_){}
+        const first=(fields.first||fields.name||'').trim().split(/\s+/)[0];
+        const isEnq=/enqu/i.test(kind);
+        const wrap=document.createElement('div');
+        wrap.className='form-success';
+        wrap.innerHTML='<svg class="form-success__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><h3>Thanks'+(first?', '+first:'')+'.</h3><p>'+(isEnq?'Your enquiry’s in. Josh or Matt will be in touch shortly, usually within a day.':'Your message is in. We’ll be in touch shortly.')+'</p>';
+        form.replaceWith(wrap);
+        wrap.scrollIntoView({behavior:'smooth',block:'center'});
+      }
       else{ throw new Error(d.error||'send failed'); }
     }catch(err){
       if(btn){btn.disabled=false; btn.innerHTML=orig;}

@@ -485,3 +485,10 @@ img.bu.in{opacity:1}
 /* Process timeline duration tags */
 .ttime{display:inline-block;margin-left:10px;font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);background:rgba(201,162,39,.10);border:1px solid rgba(201,162,39,.25);padding:2px 9px;border-radius:999px;vertical-align:middle;white-space:nowrap}
 @media(max-width:640px){.ttime{display:block;margin:6px 0 0;width:max-content}}
+
+/* contact form success state */
+.form-success{text-align:center;padding:52px 24px;animation:fsIn .55s var(--ease) both}
+.form-success__tick{width:62px;height:62px;color:var(--green);background:var(--sand);border:1px solid var(--line);border-radius:50%;padding:16px;margin:0 auto 22px;display:block}
+.form-success h3{font-family:var(--disp);font-weight:400;color:var(--ink);font-size:30px;line-height:1.12;margin:0 0 10px}
+.form-success p{color:var(--body);max-width:38ch;margin:0 auto;font-size:16px;line-height:1.55}
+@keyframes fsIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
