@@ -547,3 +547,6 @@ img.bu.in{opacity:1}
 @media(max-width:760px){.facts{grid-template-columns:1fr 1fr}}
 .burbs{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .burbs span{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--body)}
+/* Area + project heroes carry longer headings: grow with content, always clear the nav/logo */
+.phero--roomy{height:auto;min-height:max(68vh,560px);padding-top:150px}
+@media(max-width:760px){.phero--roomy{padding-top:120px;min-height:76vh}}
