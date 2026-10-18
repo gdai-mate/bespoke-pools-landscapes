@@ -47,6 +47,15 @@
           <a href="faq.html">FAQ</a>
         </div>
         <div class="fcol">
+          <h5>Areas</h5>
+          <a href="pool-builder-brisbane-northside.html">Northside &amp; Moreton Bay</a>
+          <a href="pool-builder-brisbane-inner-east.html">Inner &amp; eastern Brisbane</a>
+          <a href="pool-builder-redlands-bayside.html">Redlands &amp; bayside</a>
+          <a href="project-paddington.html">Paddington project</a>
+          <a href="project-ferny-hills.html">Ferny Hills project</a>
+          <a href="project-ormiston.html">Ormiston project</a>
+        </div>
+        <div class="fcol">
           <h5>Get in touch</h5>
           <a href="tel:0425711975">Matt · 0425 711 975</a>
           <a href="tel:0451221820">Josh · 0451 221 820</a>
