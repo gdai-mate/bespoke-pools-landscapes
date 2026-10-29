@@ -118,6 +118,7 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-EG93TVG172');
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="tel:"],a[href^="mailto:"]');if(!a||!window.gtag)return;var h=a.getAttribute('href'),tel=h.indexOf('tel:')===0,n=h.replace(/^(tel|mailto):/,'');gtag('event','contact_click',{method:tel?'phone':'email',contact:n==='0425711975'?'Matt':n==='0451221820'?'Josh':n,page_path:location.pathname});},true);
 </script>
 </head>
 <body>
